@@ -3,16 +3,25 @@ import StockContainer from "./StockContainer";
 import PortfolioContainer from "./PortfolioContainer";
 import SearchBar from "./SearchBar";
 
-function MainContainer() {
+function MainContainer({
+  stocks,
+  portfolio,
+  sortBy,
+  filterBy,
+  setSortBy,
+  setFilterBy,
+  addToPortfolio,
+  removeFromPortfolio,
+}) {
   return (
     <div>
-      <SearchBar />
+      <SearchBar sortBy={sortBy} filterBy={filterBy} setSortBy={setSortBy} setFilterBy={setFilterBy} />
       <div className="row">
         <div className="col-8">
-          <StockContainer />
+          <StockContainer stocks={stocks} sortBy={sortBy} filterBy={filterBy} addToPortfolio={addToPortfolio} />
         </div>
         <div className="col-4">
-          <PortfolioContainer />
+          <PortfolioContainer portfolio={portfolio} removeFromPortfolio={removeFromPortfolio} />
         </div>
       </div>
     </div>
